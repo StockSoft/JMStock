@@ -10,3 +10,6 @@ Version: 3.3.5-dist
 
 ## JQuery
 Version: 1.11.3
+
+## HighCharts
+Version 2.1.8
