@@ -25,7 +25,7 @@ The web on django framework docker.
 
 # Components
 ## Django
-Version: 1.8.4-python2
+Version: Django-nonrel-1.6.11
 
 ## Bootstrap
 Version: 3.3.5-dist
