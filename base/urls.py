@@ -28,4 +28,6 @@ import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^kline/', views.kline, name='kline'),
+    url(r'^klinedata/(\w+)/(\w+)/$', views.klinedata, name='klinedata'),
 ]
