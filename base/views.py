@@ -18,3 +18,5 @@ def klinedata(request, code, ktype):
 
     data = serializers.serialize("json", kl_data)
     return HttpResponse(data)
+
+def kline_code_get(request):

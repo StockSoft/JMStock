@@ -21,3 +21,9 @@ class KLine(models.Model):
     ma10 = models.FloatField()
     turnover = models.FloatField()
 
+class KLineCodeList(models.Model):
+    code = models.CharField(max_length=12)
+    ktype = models.CharField(max_length=10)
+    start = models.CharField(max_length=36)
+    end = models.CharField(max_length=36)
+    last_update = models.IntegerField()
