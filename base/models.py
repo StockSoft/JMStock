@@ -23,7 +23,9 @@ class KLine(models.Model):
 
 class KLineCodeList(models.Model):
     code = models.CharField(max_length=12)
+    name = models.CharField(max_length=254)
     ktype = models.CharField(max_length=10)
     start = models.CharField(max_length=36)
-    end = models.CharField(max_length=36)
+    end = models.CharField(max_length=36, null=True)
     last_update = models.IntegerField()
+    status = models.IntegerField()

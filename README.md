@@ -33,5 +33,8 @@ Version: 3.3.5-dist
 ## JQuery
 Version: 1.11.3
 
+## JQuery-UI
+Version: 1.11.4 with base theme.
+
 ## HighCharts
 Version 2.1.8

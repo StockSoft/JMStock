@@ -2,6 +2,10 @@
 
 {% block title %} K线图测试 {% endblock %} 
 
+{% block header %}
+    <link href="/static/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+{% endblock %} 
+
 {% block content %}
 
 <div class='container'>
@@ -9,7 +13,7 @@
     <form class='form form-inline' action='javascript:showKLine();'>
         <div class='form-group'>
             <label for='code'>股票代码: </label>
-            <input type='text' id='code' name='code' placeholder='600848' />
+            <input type='text' id='code' name='code' placeholder='600848(自仪股份)' />
         </div>
         <div class='form-group'>
             <label for='ktype'>K线类型: </label>
@@ -34,6 +38,7 @@
 {% block js %}
 <script src="/static/js/highstock.js"></script>
 <script src="/static/js/modules/exporting.js"></script>
+<script src="/static/jquery-ui/jquery-ui.min.js"></script>
 
 <script type='text/javascript'>
 function showKLine(){
@@ -148,6 +153,27 @@ function showKLine(){
     });
 };
 
+// 股票输入自动补全
+code_list = []; 
+{% for item in code_list %}
+code_list.push({label:'{{item.code}}-{{item.name}}', value:'{{item.code}}'});
+{% endfor %}
+/*
+code_list = [
+    {value: '600848', label: '600848-自仪股份'},
+    {value: '600255', label: '600255-鑫科材料'},
+    {value : "600393", label : "600393-东华实业" },
+    {value : "000630", label : "000630-铜陵有色" }
+];
+*/
+$('#code').autocomplete({
+    source: code_list, 
+    /*
+    select: function(event, ui) {
+        showKline();
+    },
+    */
+});
 // $(showKLine);
 </script>
 
