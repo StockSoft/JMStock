@@ -1,4 +1,4 @@
-{% extends "base/base.tpl" %}
+{% extends "web/base.tpl" %}
 
 {% block title %} K线图测试 {% endblock %} 
 
@@ -55,7 +55,7 @@ function showKLine(){
         return;
     }
 
-    var jsonUrl = '/base/klinedata/' + code + '/' + ktype + '/';
+    var jsonUrl = '/rest/klinedata/' + code + '/' + ktype + '/';
 
     $.getJSON(jsonUrl).done(function (data) {
 
@@ -77,20 +77,17 @@ function showKLine(){
         var title = '' + ktypeName + '图-' + code;
 
         for (i; i < dataLength; i += 1) {
-            console.log(data[i]);
-            console.log(data[i]['fields']['timestr']) 
-            console.log(data[i]['fields']['open']) 
             ohlc.push([
-                data[i]['fields']['timestamp'], // the date
-                data[i]['fields']['open'],
-                data[i]['fields']['high'],
-                data[i]['fields']['low'],
-                data[i]['fields']['close']
+                data[i]['timestamp'], // the date
+                data[i]['open'],
+                data[i]['high'],
+                data[i]['low'],
+                data[i]['close']
             ]);
 
             volume.push([
-                data[i]['fields']['timestamp'], // the date
-                data[i]['fields']['volume'],
+                data[i]['timestamp'], // the date
+                data[i]['volume'],
             ]);
         }
 
@@ -154,25 +151,10 @@ function showKLine(){
 };
 
 // 股票输入自动补全
-code_list = []; 
-{% for item in code_list %}
-code_list.push({label:'{{item.code}}-{{item.name}}', value:'{{item.code}}'});
-{% endfor %}
-/*
-code_list = [
-    {value: '600848', label: '600848-自仪股份'},
-    {value: '600255', label: '600255-鑫科材料'},
-    {value : "600393", label : "600393-东华实业" },
-    {value : "000630", label : "000630-铜陵有色" }
-];
-*/
-$('#code').autocomplete({
-    source: code_list, 
-    /*
-    select: function(event, ui) {
-        showKline();
-    },
-    */
+$.getJSON('/rest/codelist/').done(function (data) {
+    $('#code').autocomplete({
+        source: data, 
+    });
 });
 // $(showKLine);
 </script>

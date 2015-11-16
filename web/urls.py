@@ -1,4 +1,14 @@
-"""JMStock URL Configuration
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+#
+#   Author  :   liqiang
+#   E-mail  :   liqiang@prettydad.com
+#   Date    :   15/10/06 15:21:56
+#   Desc    :
+#
+
+
+"""stock_web URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
@@ -14,10 +24,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
-from django.contrib import admin
+import views
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^web/', include('web.urls')),
-    url(r'^rest/', include('rest.urls')),
+    url(r'^$', views.home, name='home'),
+    url(r'^kline/', views.kline, name='kline'),
 ]
