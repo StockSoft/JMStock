@@ -29,3 +29,16 @@ class KLineCodeList(models.Model):
     end = models.CharField(max_length=36, null=True)
     last_update = models.IntegerField()
     status = models.IntegerField()
+
+class RealTimeData(models.Model):
+    code = models.CharField(max_length=12)
+    name = models.CharField(max_length=254)
+    changepercent = models.FloatField()
+    trade = models.FloatField()
+    open = models.FloatField()
+    high = models.FloatField()
+    low = models.FloatField()
+    settlement = models.FloatField()
+    volume = models.FloatField()
+    turnoverratio = models.FloatField()
+    timestamp = models.IntegerField()

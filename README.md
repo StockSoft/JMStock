@@ -1,5 +1,6 @@
 # JMStock
 The web on django framework docker.
+> 放弃了，Django配上MongoDB，不仅把MongoDB变成了MySQL，而且还是不好用的MySQL
 
 # Setup
 1. Install virtualenv
